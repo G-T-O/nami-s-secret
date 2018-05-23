@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
 
         FirebaseUser user = firebaseAuth.getCurrentUser();
-
         if(user != null){
             finish();
             startActivity(new Intent(MainActivity.this, BoardActivity.class));
@@ -57,13 +56,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });}
 
-
-
     private void validate(String userName, String userPassword) {
-
         progressDialog.setMessage("Please wait while we retrieve data");
         progressDialog.show();
-
         firebaseAuth.signInWithEmailAndPassword(userName, userPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -82,16 +77,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
+    
     private void setUpUi(){
-        Name = (EditText)findViewById(R.id.etName);//Ok
-        Password = (EditText)findViewById(R.id.etPassword);//Ok
+        Name = (EditText)findViewById(R.id.etName);
+        Password = (EditText)findViewById(R.id.etPassword);
         Info = (TextView)findViewById(R.id.tvInfo);
-        Login = (Button)findViewById(R.id.btnLogin);//Ok
-        userRegistration = (TextView)findViewById(R.id.tvRegister);//Ok
+        Login = (Button)findViewById(R.id.btnLogin);
+        userRegistration = (TextView)findViewById(R.id.tvRegister);
         Info.setText("No of attempts remaining: 5");
-
     }
 
 }
